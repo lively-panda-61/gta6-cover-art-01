@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>scene harness</title></head>
+<body>
+<canvas id="scene" width="1080" height="1080"></canvas>
+<script type="module">
+import { paintScene } from './scenes.mjs';
+const params = new URLSearchParams(location.search);
+const canvas = document.getElementById('scene');
+const ctx = canvas.getContext('2d');
+paintScene(ctx, 1080, 1080, params.get('scene') || 'boulevard');
+window.__sceneDone = true;
+</script>
+</body>
+</html>
