@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Coast — GTA 6-style Cover Maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>VICE COAST</h1>
+    <p class="tagline">A GTA 6-style cover maker — your photo, your caption, one poster.</p>
+  </div>
+  <p class="hint">Drag on the cover to move a photo &middot; scroll to zoom &middot; click a panel to pick it</p>
+</header>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <fieldset>
+      <legend>1 &middot; Photo</legend>
+      <label class="file-label">Add your photos
+        <input id="photo-input" type="file" accept="image/*" multiple>
+      </label>
+      <p class="note">Or drop image files onto the cover. Photos stay on your machine — nothing is uploaded.</p>
+      <div class="photo-row" id="photo-row" aria-label="Available photos"></div>
+    </fieldset>
+    <fieldset>
+      <legend>2 &middot; Layout</legend>
+      <div class="pick-grid" id="layout-pick"></div>
+      <label class="field">Photo in the selected panel
+        <select id="slot-photo"></select>
+      </label>
+      <div class="slider-row">
+        <label>Zoom <input id="slot-zoom" type="range" min="1" max="3" step="0.05" value="1"></label>
+        <button id="slot-reset" type="button">Reset panel</button>
+      </div>
+      <p class="note" id="slot-note">Panel 1 selected.</p>
+    </fieldset>
+    <fieldset>
+      <legend>3 &middot; Colour grade</legend>
+      <div class="pick-grid" id="grade-pick"></div>
+    </fieldset>
+    <fieldset>
+      <legend>4 &middot; Caption</legend>
+      <label class="field">Title
+        <input id="caption-title" type="text" maxlength="40" value="SUNSET HEIST">
+      </label>
+      <label class="field">Subtitle
+        <input id="caption-sub" type="text" maxlength="30" value="SOLMAR BAY">
+      </label>
+      <label class="field">Tagline
+        <input id="caption-tag" type="text" maxlength="40" value="ONE LAST SCORE">
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>5 &middot; Size &amp; export</legend>
+      <div class="pick-row" id="size-pick"></div>
+      <button id="export" type="button" class="export-btn">Export PNG</button>
+      <p id="status" role="status"></p>
+    </fieldset>
+  </section>
+  <section class="stage" aria-label="Cover preview">
+    <div class="canvas-wrap" id="canvas-wrap">
+      <canvas id="cover" width="900" height="900" aria-label="Live cover preview"></canvas>
+    </div>
+    <p class="stage-note">Live preview — the export is the same drawing at full size.</p>
+  </section>
+</main>
+<script type="module" src="./src/app.js"></script>
+</body>
+</html>
